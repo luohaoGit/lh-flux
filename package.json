@@ -6,7 +6,8 @@
   "author": "luohao",
 
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
 
   "dependencies": {
@@ -29,8 +30,9 @@
     "gulp": "^3.8.5",
     "reactify": "^0.13.1",
     "envify": "^3.0.0",
-    "uglify": "~2.4.15",
-    "watchify": "^2.1.1"
+    "uglify-js": "~2.4.15",
+    "watchify": "^2.1.1",
+    "literalify": "^0.3.0"
   },
 
   "browserify": {
