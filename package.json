@@ -34,7 +34,10 @@
   },
 
   "browserify": {
-
+    "transform": [
+      "reactify",
+      "envify"
+    ]
   },
 
   "license": "MIT"
