@@ -6,49 +6,47 @@ var livereload = require('gulp-livereload');
 var notify = require('gulp-notify');
 var fs = require('fs');
 
-// 環境變數
+// 环境变量
 var env = 'prod'; // dev||prod
 
 var live = livereload();
 livereload.listen();
 
-// 路徑變數
+// 路径
 var paths = {
-    main: './app/js/boot.js',
-    css: './app/assets/css/*.css',
+    main: './js/boot.js',
+    css: './css/*.css',
     destDir: 'build',
-    destCSS: 'build/assets/css'
+    destCSS: 'build/css'
 };
 
 /**
  * 
  */
 gulp.task('bundle-js', function() {
-    
-    // console.log( '\nbundle-js 跑' );
 
     return browserify({
-        entries:[ paths.main ]
+        entries:[paths.main]
     })
 
     // 最優先編譯 jsx，確保後面其它 transform 運行無誤
-    .transform( 'reactify' )
+    .transform('reactify')
 
     // 所有檔案合併為一，並指定要生成 source map
-    .bundle({debug: true})
+    .bundle()
 
     .on('error', function( err ){
         console.log( '[錯誤]', err );
         this.end();
-        gulp.src('').pipe( notify('✖ Bunlde Failed ✖') )
+        gulp.src('').pipe(notify('✖ Bunlde Failed ✖'))
     })
     
     // 利用 vinyl-source-stream 幫檔案取名字
-    .pipe( source('bundle.js') )
+    .pipe(source('bundle.js'))
     
     // 接著就回到 gulp 系統做剩下事
     // 這裏是直接存檔到硬碟
-    .pipe( gulp.dest('./build') )
+    .pipe(gulp.dest('./build'))
     
 });
 
@@ -56,14 +54,14 @@ gulp.task('bundle-js', function() {
  * 縮短 app.css
  */
 gulp.task('minify-css', function() {
-  gulp.src( paths.css )
+  gulp.src(paths.css)
     .pipe(minifyCSS(
       {
           noAdvanced: false,
           keepBreaks:true,
           cache: true // 這是 gulp 插件獨有的
       }))
-    .pipe(gulp.dest( paths.destCSS ))
+    .pipe(gulp.dest(paths.destCSS))
 });
 
 
@@ -72,8 +70,8 @@ gulp.task('minify-css', function() {
  * 才方便測試
  */
 gulp.task('copy', function(){
-    return gulp.src([ 'app/index.html' ], { base: 'app' } )
-    .pipe( gulp.dest(paths.destDir));
+    return gulp.src(['./index.html'], {base: './'})
+    .pipe(gulp.dest(paths.destDir));
 })
 
 
@@ -81,9 +79,7 @@ gulp.task('copy', function(){
  * 監控 app/ 下所有 js, jsx, html, css 變化就重新編譯
  */
 gulp.task('watch', function() {
-    // console.log( 'watch 跑' );
-    
-    gulp.watch( 'app/**/*', ['bundle-js', 'minify-css', 'copy', 'refresh'] );
+    gulp.watch('./**/*', ['bundle-js', 'minify-css', 'copy', 'refresh']);
 });
 
 /**
@@ -112,4 +108,4 @@ gulp.task('default', ['dev']);
  * 廣播 livereload 事件
  * 啟動 8000 server 供本地跑
  */
-gulp.task('dev', ['bundle-js', 'minify-css', 'copy', 'watch'] );
+gulp.task('dev', ['bundle-js', 'minify-css', 'copy', 'watch']);
