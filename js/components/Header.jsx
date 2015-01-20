@@ -7,6 +7,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+var React = require('react');
 var TodoActions = require('../actions/TodoActions');
 var TodoTextInput = require('./TodoTextInput.jsx');
 

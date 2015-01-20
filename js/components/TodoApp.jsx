@@ -12,6 +12,7 @@
  * the TodoStore and passes the new data to its children.
  */
 
+var React = require('react');
 var Footer = require('./Footer.jsx');
 var Header = require('./Header.jsx');
 var MainSection = require('./MainSection.jsx');
