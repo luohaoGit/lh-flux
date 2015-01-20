@@ -29,9 +29,6 @@ gulp.task('bundle-js', function() {
         entries:[paths.main]
     })
 
-    // 最優先編譯 jsx，確保後面其它 transform 運行無誤
-    .transform('reactify')
-
     // 所有檔案合併為一，並指定要生成 source map
     .bundle()
 
@@ -78,20 +75,20 @@ gulp.task('copy', function(){
 /**
  * 監控 app/ 下所有 js, jsx, html, css 變化就重新編譯
  */
-gulp.task('watch', function() {
-    gulp.watch('./**/*', ['bundle-js', 'minify-css', 'copy', 'refresh']);
-});
+//gulp.task('watch', function() {
+//    gulp.watch('./**/*', ['bundle-js', 'minify-css', 'copy']);
+//});
 
 /**
  * livereload refresh
- */
+
 gulp.task( 'refresh', function(){
     // console.log( '\nlivereload > refresh\n' );
     setTimeout(function(){
       live.changed('');
     }, 500)
 })
-
+ */
 
 //========================================================================
 //
@@ -108,4 +105,4 @@ gulp.task('default', ['dev']);
  * 廣播 livereload 事件
  * 啟動 8000 server 供本地跑
  */
-gulp.task('dev', ['bundle-js', 'minify-css', 'copy', 'watch']);
+gulp.task('dev', ['bundle-js', 'minify-css', 'copy']);
