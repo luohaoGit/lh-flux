@@ -7,11 +7,9 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-var React = require('react');
-
-var TodoApp = require('./components/TodoApp.react');
+var TodoApp = React.createFactory(require('./components/TodoApp.jsx'));
 
 React.render(
-  <TodoApp />,
+    TodoApp(),
   document.getElementById('todoapp')
 );

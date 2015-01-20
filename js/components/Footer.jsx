@@ -7,7 +7,6 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-var React = require('react');
 var ReactPropTypes = React.PropTypes;
 var TodoActions = require('../actions/TodoActions');
 

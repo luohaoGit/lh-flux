@@ -14,7 +14,7 @@ livereload.listen();
 
 // 路径
 var paths = {
-    main: './js/boot.js',
+    main: './js/app.js',
     css: './css/*.css',
     destDir: 'build',
     destCSS: 'build/css'
@@ -35,8 +35,8 @@ gulp.task('bundle-js', function() {
     // 所有檔案合併為一，並指定要生成 source map
     .bundle()
 
-    .on('error', function( err ){
-        console.log( '[錯誤]', err );
+    .on('error', function(err){
+        console.log('[錯誤]', err);
         this.end();
         gulp.src('').pipe(notify('✖ Bunlde Failed ✖'))
     })
