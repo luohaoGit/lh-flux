@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var uglify = require('gulp-uglify');
+var buffer = require('gulp-buffer');
 var minifyCSS = require('gulp-minify-css');
 var livereload = require('gulp-livereload');
 var notify = require('gulp-notify');
@@ -41,14 +43,13 @@ gulp.task('bundle-js', function() {
     // 利用 vinyl-source-stream 幫檔案取名字
     .pipe(source('bundle.js'))
     
-    // 接著就回到 gulp 系統做剩下事
-    // 這裏是直接存檔到硬碟
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest('./build'))
-    
 });
 
 /**
- * 縮短 app.css
+ * 压缩css
  */
 gulp.task('minify-css', function() {
   gulp.src(paths.css)
