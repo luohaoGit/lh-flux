@@ -1,0 +1,20 @@
+{
+  "name": "lh-flux",
+  "version": "0.0.0",
+  "description": "flux&react",
+  "main": "js/app.js",
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "luohao"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
