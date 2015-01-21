@@ -74,7 +74,7 @@ gulp.task('copy', function(){
 
 
 /**
- * 監控 app/ 下所有 js, jsx, html, css 變化就重新編譯
+ * 监控 app/ 下所有 js, jsx, html, css 变化，重新编译
  */
 //gulp.task('watch', function() {
 //    gulp.watch('./**/*', ['bundle-js', 'minify-css', 'copy']);
@@ -93,17 +93,13 @@ gulp.task( 'refresh', function(){
 
 //========================================================================
 //
-// 總成的指令集
+// 总的指令集
 
 
 /**
- * 初期讓 default 就是跑 dev task，將來可能會改成有 build, deploy 等花樣
+ * 初期让 default 跑 dev task，还有 build, deploy
  */
 gulp.task('default', ['dev']);
 
-/**
- * 編譯與打包 jsx 為一張檔案
- * 廣播 livereload 事件
- * 啟動 8000 server 供本地跑
- */
+
 gulp.task('dev', ['bundle-js', 'minify-css', 'copy']);
